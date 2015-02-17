@@ -1,0 +1,72 @@
+TODO
+
+		NEEDED EXTERNAL OPERATIONS
+		
+ * - 	dis		 		display()-displays the grid (default size is 10 X 6)
+ * - 	f				fill() - fill from (a,b) to (c,d) in a rectangular grid
+ * - 	as				assignCell() - assigns a value to an individual cell
+ * - 	n				number() - populates grid from (a,b) to (c,d) with numbers going from 0,1,2,3,4,....
+ * - 	a/s/m/d			add/sub/mult/diviCell() - arithmetic on two cells if they are doubles
+ * - 	ar/sr/mr/dr		add/sub/mult/diviRow() - arithmetic on two rows if they are doubles
+ * - 	ac/sc/mc/dc		add/sub/mult/diviColumn() - arithmetic on two columns if they are doubles
+ * - 	ir/ic			insertRow/Column() - insert a new row or column
+ * - 	delr/delc		deleteRow/Column() - delete a new row or column
+ * - 	q				quit()
+ 
+ 		NEEDED INTERNAL OPERATIONS
+ * + Grid constructor should create and link all needed nodes 
+ * - each cell displays 10 characters or doubles and doubles will be 4 decimal places
+ * + row and column numbers need to be displayed
+ * - menu is a large switch statement
+ ***********************************************************************************************************************
+ ***********************************************************************************************************************
+ ***********************************************************************************************************************
+ ***********************************************************************************************************************
+ ***********************************************************************************************************************
+ 
+ NODE CLASS
+ 	basics of node
+ 		-right
+ 		-down
+ 		-value
+ 		
+ Value Class
+ 	basic value
+ 		-dval = 0
+ 		-sval = null
+ 		-tag = "STR"
+ 	arithmetic on values
+ 	toString() method of converting dval or sval to cell format
+ 		
+ Grid Class
+ 	-basic grid(2d matrix)
+ 	-display
+ 	-assign cell
+ 	-number to fill cells with natural numbers in subgrid
+ 	-fill to fill certain cells with same value in subgrid
+ 		-double check VALIDATION in program 1 directions
+ 	-arithmetic on cells(called from value class)
+ 	-arithmetic on rows(called from value class with for loop to iterate)
+ 	-arithmetic on col(called from value class with for loop to iterate)
+ 	-insert row/col
+ 	-delete row/col
+ 	-quit
+ 	-menu to choose options(switch statement)
+ 	-
+
+
+
+left off on display() method in Grid class
+having problems with toString method from Value class
+	-keeps returning with memory address of node instead of value of node when method in Value() class
+	-adding 	public String toString(Node v){
+		if(v.data.tag == "DBL"){
+			System.out.println("working");
+			return (String.format("%10.4f", v.data.dval));}
+		else if(v.data.tag == "STR"){
+			System.out.println("working");
+			return (String.format("%10s", v.data.sval));}
+		else
+			return(null);
+		}
+		to Node() instead of Value () and calling it by n.toString(n) from node class works the way wanted but needs to be in Class Value()
