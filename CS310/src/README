@@ -1,7 +1,6 @@
-TODO
+This program makes a simple 2d matrix using circular linked lists
 
-		Menu
-		
+		Menu	
  * - 	dis		 		display()-displays the grid (default size is 10 X 6)
  * - 	f				fill() - fill from (a,b) to (c,d) in a rectangular grid
  * - 	as				assignCell() - assigns a value to an individual cell
@@ -13,33 +12,35 @@ TODO
  * - 	delr/delc		deleteRow/Column() - delete a new row or column
  * - 	q				quit()
  
- 		NEEDED INTERNAL OPERATIONS
- * + Grid constructor should create and link all needed nodes 
- * + each cell displays 10 characters or doubles and doubles will be 4 decimal places
- * + row and column numbers need to be displayed
- * - menu is a large switch statement
+
  ***********************************************************************************************************************
  ***********************************************************************************************************************
  ***********************************************************************************************************************
  ***********************************************************************************************************************
  ***********************************************************************************************************************
  
- +NODE CLASS
- 	basics of node
- 		+right
- 		+down
- 		+value
+  		NEEDED INTERNAL OPERATIONS
+ * + Grid constructor should create and link all needed nodes 
+ * + each cell displays 10 characters or doubles and doubles will be 4 decimal places
+ * + row and column numbers need to be displayed
+ * - menu is a large switch statement
+ 
+ * +NODE CLASS  looks good
+ *	basics of node
+ *		+right
+ *		+down
+ *		+value
  		
- +Value Class
- 	basic value
- 		+dval = 0
- 		+sval = null
- 		+tag = "STR"
- 	+arithmetic on values
- 	-toString() method of converting dval or sval to cell format
+ * +Value Class  looks good
+ *	basic value
+ *		+dval = 0
+ *		+sval = null
+ *		+tag = "STR"
+ *	+arithmetic on values
+ *	+toString() method of converting dval or sval to cell format
  		
  Grid Class
- 	-basic grid(2d matrix)
+ 	+basic grid(2d matrix)
  	+display
  	-assign cell
  	-number to fill cells with natural numbers in subgrid
@@ -55,4 +56,3 @@ TODO
  	-
 
 
-row and col counters

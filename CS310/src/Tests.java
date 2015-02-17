@@ -106,36 +106,16 @@ public class Tests {
 	
 	//test for grid class
 	/*public static void main(String[] args){
-	  Grid a = new Grid();
-	  System.out.println(a.head.toString(a.head));
+	   Grid a = new Grid();
+		a.rCurrent.data.sval = "hello";
+		a.rCurrent.right.data.sval = "world";
+		a.rCurrent.right.right.data.sval = "I";
+		a.rCurrent.right.right.right.data.sval = "work";
+		a.rCurrent.right.right.right.right.data.sval = "fine";
+		a.rCurrent.right.right.right.right.right.data.sval = "!";
+		a.display();
 	 
 	  }*/
 	
-	//testing linked list to the right
-	/*public static void main(String[] args){
-		Node head = new Node();
-		Node pointer = head;
-		pointer.data.sval = "0";
-		head.right = pointer;
 
-		for(int i = 0; i<6; i++){
-			pointer.right = new Node();
-			pointer.data.sval = ""+i;
-			pointer = pointer.right;
-		}
-		pointer.right = head;
-		
-		for(int j = 0; j<6; j++){
-			System.out.print(pointer.toString(pointer));
-			pointer = pointer.right;
-		}
-		
-	}*/
-	
-	//testing linked list down
-	public static void main(String[] args){
-		
-		
-		
-	}
 }

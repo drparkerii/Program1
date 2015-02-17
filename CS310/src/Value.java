@@ -1,4 +1,3 @@
-//this is solid
 public class Value {
 	
 	public double dval;
@@ -7,15 +6,15 @@ public class Value {
 	
 	//initial constructor for value
 	public Value(){
-		dval = 0;
-		sval = null;
-		tag = "STR";
+		this.dval = 0;
+		this.sval = "";
+		this.tag = "STR";
 	}
 	//constructor for value containing a data
 	public Value(double d, String s, String t){
-		dval = d;
-		sval = s;
-		tag = t;
+		this.dval = d;
+		this.sval = s;
+		this.tag = t;
 	}
 	
 	/************************
@@ -69,11 +68,12 @@ public class Value {
 		else netval.tag = "INV";
 			return(netval);
 	}
-
-
-	/*public void main(String[] args){
-		Node n = new Node();
-		System.out.println(n.toString(n));
-	}*/ 
-
+	public String toString(Value v){
+		if(v.tag == "DBL"){
+			return (String.format("%10.4f", v.dval));}
+		else if(v.tag == "STR"){
+			return (String.format("%10s", v.sval));}
+		else
+			return(null);
+	}
 }

@@ -22,20 +22,4 @@ public class Node {
 		this.down = d;
 		this.data = v;
 	}
-
-	/** move to value class and make it accept value as parameter instead of node*/
-	public String toString(Node v){
-		if(v.data.tag == "DBL"){
-			return (String.format("%10.4f", v.data.dval));}
-		else if(v.data.tag == "STR"){
-			return (String.format("%10s", v.data.sval));}
-		else
-			return(null);
-	}
-
-	
-	/*public static void main(String[] args){
-		Node v = new Node();
-		System.out.println(v.toString(v));
-	}*/
 }
