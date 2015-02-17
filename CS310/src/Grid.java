@@ -1,10 +1,8 @@
 public class Grid {
 	int row = 10;								//set initial row size
 	int col = 6;								//set initial column size
-	Node grid[][] = new Node[row][col];			//initialize the grid 10 rows i X 6 columns j
-	Node head = grid[0][0];						//set head node to (0,0)
-	Node rCurrent = head;
-	Node dCurrent = head;
+	Node grid[][] = new Node[50][50];			//initialize the grid
+	Node head, rCurrent, dCurrent;
 	
 
 	//constructs the default grid
@@ -13,29 +11,37 @@ public class Grid {
 		//Set up pointers column by column, row by row
 		for(int i = 0;i<row;i++){
 			for(int j = 0; j<col; j++){
-				grid[i][j] = new Node();				//initializes Node
-				
-				if(j+1==col){								//if statement to catch error for columns
-					grid[i][j].right = grid[i][0];
-				}
-				else{
-					grid[i][j+1] = new Node();
-					grid[i][j].right = grid[i][j+1];	//set node a to point right to node b
-					grid[i][j+1].right = grid[i][0];	//set node b to point right to head of row
-				}
-				
-				
-				if(i+1 == row){							//if statement to catch error for rows
-					grid[i][j].down = grid[0][j];
-				}
-				else{
-
-					grid[i+1][j] = new Node();
-					grid[i][j].down = grid[i+1][j];		//set node a to point down to node c
-					grid[i+1][j].down = grid[0][j];		//set node c to point down to head of column
-				}
+				grid[i][j] = new Node();				//initializes Nodes in the grid
 			}
 		}
+		for(int k = 0;k<row;k++){
+			for(int l = 0; l<col; l++){
+				
+				if(l+1==col){								//if statement to catch error for columns
+					grid[k][l].right = grid[k][0];
+				}
+				else{
+					//grid[k][l+1] = new Node();
+					grid[k][l].right = grid[k][l+1];	//set node a to point right to node b
+					grid[k][l+1].right = grid[k][0];	//set node b to point right to head of row
+				}
+				
+				
+				if(k+1 == row){							//if statement to catch error for rows
+					grid[k][l].down = grid[0][l];
+				}
+				else{
+					//grid[k+1][l] = new Node();
+					grid[k][l].down = grid[k+1][l];		//set node a to point down to node c
+					grid[k+1][l].down = grid[0][l];		//set node c to point down to head of column
+				}
+			}
+			
+		}
+		head = grid[0][0];						//set head node to (0,0)
+		rCurrent = head;
+		dCurrent = head;	
+		
 		
 	}//end grid() constructor
 	
@@ -52,9 +58,9 @@ public class Grid {
 		
 		for(int i = 0; i < row;i++){						//prints row numbers
 			System.out.print(String.format("%10s", "row "+i));
-			System.out.print(head.toString());
+			System.out.print(head.toString(head));
 			do{
-							
+				System.out.print(rCurrent.toString(rCurrent));			
 			}
 			while(dCurrent!=head);
 			
@@ -80,8 +86,8 @@ public class Grid {
 	//use String.format("%10s", str) to format String output
 	public static void main(String[] args){
 		Grid a = new Grid();
-		a.grid[0][0].data.dval = 15;
 		a.display();
+		//System.out.println(a.head.toString(a.head));
 		
 	}
 }

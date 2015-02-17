@@ -30,17 +30,15 @@ public class Node {
 
 	public String toString(Node v){
 		if(v.data.tag == "DBL"){
-			System.out.println("working");
 			return (String.format("%10.4f", v.data.dval));}
 		else if(v.data.tag == "STR"){
-			System.out.println("working");
 			return (String.format("%10s", v.data.sval));}
 		else
 			return(null);
 	}
 	
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Node v = new Node();
 		System.out.println(v.toString(v));
-	}
+	}*/
 }

@@ -71,9 +71,9 @@ public class Value {
 	}
 
 
-	public void main(String[] args){
+	/*public void main(String[] args){
 		Node n = new Node();
 		System.out.println(n.toString(n));
-	}
+	}*/ 
 
 }

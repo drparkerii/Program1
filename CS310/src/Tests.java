@@ -53,6 +53,10 @@ public class Tests {
 		Node cd = new Node(ab,bc);
 		System.out.println(cd.right.data.dval);
 		
+		//testing toString()
+		aa.toString(aa);
+		ab.toString(ab);
+		bc.toString(bc);
 		
 	}*/
 	
@@ -67,9 +71,9 @@ public class Tests {
 		u.sval = "hello";
 		u.tag = "DBL";
 		
-		System.out.println(u.dval);
-		System.out.println(u.sval);
-		System.out.println(u.tag);
+		System.out.println(u.dval);	//10.0
+		System.out.println(u.sval);	//hello
+		System.out.println(u.tag);	//DBL
 		System.out.println("");
 
 		
@@ -77,9 +81,9 @@ public class Tests {
 		v.sval = "world";
 		v.tag = "DBL";
 		
-		System.out.println(v.dval);
-		System.out.println(v.sval);
-		System.out.println(v.tag);
+		System.out.println(v.dval);	//15.0
+		System.out.println(v.sval);	//world
+		System.out.println(v.tag);	//DBL
 		System.out.println("");
 
 		
@@ -99,6 +103,9 @@ public class Tests {
 	}*/
 	
 	//test for grid class
-	/*public static void main(String[] args){
-	 * }*/
+	public static void main(String[] args){
+	  Grid a = new Grid();
+	  System.out.println(a.head.toString(a.head));
+	 
+	  }
 }
