@@ -7,42 +7,27 @@ public class Grid {
 
 	//constructs the default grid
 	//ONLY PLACE ALLOWED TO MAINPULATE ARRAYS
-	public Grid(){				
-		//Set up pointers column by column, row by row
-		for(int i = 0;i<row;i++){
-			for(int j = 0; j<col; j++){
-				grid[i][j] = new Node();				//initializes Nodes in the grid
-			}
-		}
-		for(int k = 0;k<row;k++){
-			for(int l = 0; l<col; l++){
-				
-				if(l+1==col){								//if statement to catch error for columns
-					grid[k][l].right = grid[k][0];
-				}
-				else{
-					//grid[k][l+1] = new Node();
-					grid[k][l].right = grid[k][l+1];	//set node a to point right to node b
-					grid[k][l+1].right = grid[k][0];	//set node b to point right to head of row
-				}
-				
-				
-				if(k+1 == row){							//if statement to catch error for rows
-					grid[k][l].down = grid[0][l];
-				}
-				else{
-					//grid[k+1][l] = new Node();
-					grid[k][l].down = grid[k+1][l];		//set node a to point down to node c
-					grid[k+1][l].down = grid[0][l];		//set node c to point down to head of column
-				}
-			}
-			
-		}
-		head = grid[0][0];						//set head node to (0,0)
+	public Grid(){	
+		
+		head = new Node();
 		rCurrent = head;
-		dCurrent = head;	
-		
-		
+		dCurrent = head;
+		for(int i=0; i<row;i++){
+			for(int j=0;j<col;j++){
+				if(j+1==col){
+					rCurrent.right = dCurrent;		//point last node to head
+				}
+				else{
+				rCurrent.right = new Node();		//make new node to the right
+				rCurrent = rCurrent.right;			//move to new node right
+				}
+			}
+			dCurrent.down = new Node();			//make new node below
+			dCurrent = dCurrent.down;			//move to new node below
+			rCurrent = dCurrent;				//move rCurrent to beginning of new row
+		}
+		rCurrent = head;						//reset rCurrent to head
+		dCurrent = head;						//reset dCurrent to head
 	}//end grid() constructor
 	
 	//Display method
@@ -53,33 +38,22 @@ public class Grid {
 		for(int k = 0; k<col;k++){						//prints column numbers
 			System.out.print(String.format("%10s", "col "+k));
 		}
-		
 		System.out.print("\n");							
 		
-		for(int i = 0; i < row;i++){						//prints row numbers
-			System.out.print(String.format("%10s", "row "+i));
-			System.out.print(head.toString(head));
-			do{
-				System.out.print(rCurrent.toString(rCurrent));			
+		for(int i = 0; i < row;i++){							
+			System.out.print(String.format("%10s", "row "+i));	//prints row numbers
+			for(int j = 0; j<col;j++){
+				System.out.print(rCurrent.toString(rCurrent));	//print rCurrent
+				rCurrent = rCurrent.right;						//move rCurrent to the right
 			}
-			while(dCurrent!=head);
+		dCurrent = dCurrent.down;							//dCurrent moves down
+		rCurrent = dCurrent;								//rCurrent moves to dCurrent
 			
-				
-				
-				
-			//displays fine but uses array not pointers starting at head
-			/*if(grid[i][j].data.tag == "STR"){
-				String s = grid[i][j].data.sval;
-				System.out.print(String.format("%10s", s));
-				}				}
-			else if(grid[i][j].data.tag == "DBL"){
-				double s = grid[i][j].data.dval;
-				System.out.print(String.format("%10.4f", s));
-				}*/
-			System.out.print("\n");
-			}
-			
+		System.out.print("\n");
 		}
+			
+	}
+
 		
 	
 	//use String.format("%10.4f", x) to format double output

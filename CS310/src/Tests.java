@@ -5,8 +5,10 @@ public class Tests {
 	/*public static void main(String[] args){
 		
 		Node aa = new Node();
-		Node ab = new Node();
-		Node bc = new Node();
+		aa.right = new Node();
+		Node ab = aa.right;
+		ab.right = new Node();
+		Node bc = ab.right;
 		
 		//testing calling dval
 		aa.data.dval = 1;
@@ -103,9 +105,37 @@ public class Tests {
 	}*/
 	
 	//test for grid class
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 	  Grid a = new Grid();
 	  System.out.println(a.head.toString(a.head));
 	 
-	  }
+	  }*/
+	
+	//testing linked list to the right
+	/*public static void main(String[] args){
+		Node head = new Node();
+		Node pointer = head;
+		pointer.data.sval = "0";
+		head.right = pointer;
+
+		for(int i = 0; i<6; i++){
+			pointer.right = new Node();
+			pointer.data.sval = ""+i;
+			pointer = pointer.right;
+		}
+		pointer.right = head;
+		
+		for(int j = 0; j<6; j++){
+			System.out.print(pointer.toString(pointer));
+			pointer = pointer.right;
+		}
+		
+	}*/
+	
+	//testing linked list down
+	public static void main(String[] args){
+		
+		
+		
+	}
 }

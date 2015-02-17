@@ -1,4 +1,4 @@
-
+//this is solid
 public class Value {
 	
 	public double dval;

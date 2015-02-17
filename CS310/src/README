@@ -1,6 +1,6 @@
 TODO
 
-		NEEDED EXTERNAL OPERATIONS
+		Menu
 		
  * - 	dis		 		display()-displays the grid (default size is 10 X 6)
  * - 	f				fill() - fill from (a,b) to (c,d) in a rectangular grid
@@ -15,7 +15,7 @@ TODO
  
  		NEEDED INTERNAL OPERATIONS
  * + Grid constructor should create and link all needed nodes 
- * - each cell displays 10 characters or doubles and doubles will be 4 decimal places
+ * + each cell displays 10 characters or doubles and doubles will be 4 decimal places
  * + row and column numbers need to be displayed
  * - menu is a large switch statement
  ***********************************************************************************************************************
@@ -24,23 +24,23 @@ TODO
  ***********************************************************************************************************************
  ***********************************************************************************************************************
  
- NODE CLASS
+ +NODE CLASS
  	basics of node
- 		-right
- 		-down
- 		-value
+ 		+right
+ 		+down
+ 		+value
  		
- Value Class
+ +Value Class
  	basic value
- 		-dval = 0
- 		-sval = null
- 		-tag = "STR"
- 	arithmetic on values
- 	toString() method of converting dval or sval to cell format
+ 		+dval = 0
+ 		+sval = null
+ 		+tag = "STR"
+ 	+arithmetic on values
+ 	-toString() method of converting dval or sval to cell format
  		
  Grid Class
  	-basic grid(2d matrix)
- 	-display
+ 	+display
  	-assign cell
  	-number to fill cells with natural numbers in subgrid
  	-fill to fill certain cells with same value in subgrid
@@ -55,18 +55,4 @@ TODO
  	-
 
 
-
-left off on display() method in Grid class
-having problems with toString method from Value class
-	-keeps returning with memory address of node instead of value of node when method in Value() class
-	-adding 	public String toString(Node v){
-		if(v.data.tag == "DBL"){
-			System.out.println("working");
-			return (String.format("%10.4f", v.data.dval));}
-		else if(v.data.tag == "STR"){
-			System.out.println("working");
-			return (String.format("%10s", v.data.sval));}
-		else
-			return(null);
-		}
-		to Node() instead of Value () and calling it by n.toString(n) from node class works the way wanted but needs to be in Class Value()
+row and col counters
