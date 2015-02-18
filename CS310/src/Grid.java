@@ -129,35 +129,20 @@ public class Grid {
 		temp = scan.next();
 		v = v.checkInput(temp);
 		
-		int colPosition = 0;
-		int rowPosition = 0;
-		
 		rCurrent = head;
 		dCurrent = head;
-		//moves right until at desired column then down the column
-		//remove nested for loop it is causing doubling of column position
-		for(int i = 0;i!=rowNum;i++){
-			for(int j = 0; j!=columnNum; j++){
-				rCurrent = rCurrent.right;
-				colPosition++;
-			}
+		
+		//move down then right to indicated Node
+		for(int i = 0; i!=rowNum; i++)
 			rCurrent = rCurrent.down;
-			rowPosition++;
-		}
+		for(int i = 0; i!=columnNum;i++)
+			rCurrent = rCurrent.right;
 		
 		Node cell = rCurrent;
 		cell.right = rCurrent.right;
 		cell.down = rCurrent.down;
 		cell.data = v;
-		
-		System.out.println("v.dval: "+v.dval);
-		System.out.println("cell.data.dval: "+cell.data.dval);
-		System.out.println(cell.data.toString(cell.data));
-		System.out.println("col position: "+colPosition);
-		System.out.println("row position: "+rowPosition);
-		colPosition = 0;
-		rowPosition = 0;
-		
+
 		return(a);
 		
 		
