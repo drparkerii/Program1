@@ -2,13 +2,20 @@ public class Value {
 	
 	public double dval;
 	public String sval;
-	public String tag;
+	private String tag;
 	
 	//initial constructor for value
 	public Value(){
 		this.dval = 0;
-		this.sval = "";
+		this.sval = "1";
 		this.tag = "STR";
+	}
+	public Value(double d){
+		this.dval = d;
+		this.tag = "DBL";
+	}
+	public Value(String s){
+		
 	}
 	//constructor for value containing a data
 	public Value(double d, String s, String t){
@@ -74,6 +81,31 @@ public class Value {
 		else if(v.tag == "STR"){
 			return (String.format("%10s", v.sval));}
 		else
-			return(null);
+			return(String.format("%10s", "null"));
 	}
+	
+	
+	public Value checkInput(String s){
+		Value tempVal = new Value();
+		boolean checkInput = s.startsWith("\"");		
+		if(checkInput){								//check if input is string or double
+			s = s.substring(1);				//cut out " from string
+			tempVal.sval = s;
+			tempVal.tag = "STR";
+			return (tempVal);
+		}
+		else{
+			try{
+				double d = Double.parseDouble(s);	//parse double from string
+				tempVal.dval = d;
+				tempVal.tag = "DBl";
+				return(tempVal);
+			}
+			catch(NumberFormatException n){
+				tempVal.tag = "INV";
+				return(tempVal);
+			}
+		}
+	}//end checkInput()
+	
 }

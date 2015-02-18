@@ -1,7 +1,7 @@
 This program makes a simple 2d matrix using circular linked lists
 
 		Menu	
- * - 	dis		 		display()-displays the grid (default size is 10 X 6)
+ * + 	dis		 		display()-displays the grid (default size is 10 X 6)
  * - 	f				fill() - fill from (a,b) to (c,d) in a rectangular grid
  * - 	as				assignCell() - assigns a value to an individual cell
  * - 	n				number() - populates grid from (a,b) to (c,d) with numbers going from 0,1,2,3,4,....
@@ -55,4 +55,19 @@ This program makes a simple 2d matrix using circular linked lists
  	-menu to choose options(switch statement)
  	-
 
-
+// reusable
+	Scanner scan = new Scanner(System.in);
+		int frow, fcol, trow, tcol;
+		String temp;
+		
+		System.out.println("from row: ");
+		frow = scan.nextInt();
+		System.out.println("from column: ");
+		fcol = scan.nextInt();
+		System.out.println("to row: ");
+		trow = scan.nextInt();
+		System.out.println("to column: ");
+		tcol = scan.nextInt();
+		System.out.println("with value: ");
+		temp = scan.nextLine();
+		checkInput(temp);

@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
 public class Grid {
-	String stringTemp;
-	double doubleTemp;
+	static Value tempVal;
 	int row = 10;								//set initial row size
 	int col = 6;								//set initial column size
-	Node head, rCurrent, dCurrent;
+	static Node head, rCurrent, dCurrent;
 	
 	/***************
 	 **Constructor**
@@ -21,11 +20,13 @@ public class Grid {
 					rCurrent.right = dCurrent;		//point last node to head
 				}
 				else{
-				rCurrent.right = new Node();		//make new node to the right
-				rCurrent = rCurrent.right;			//move to new node right
+					rCurrent.right = new Node();		//make new node to the right
+					rCurrent.data = new Value();
+					rCurrent = rCurrent.right;			//move to new node right
 				}
 			}
 			dCurrent.down = new Node();			//make new node below
+			dCurrent.data = new Value();
 			dCurrent = dCurrent.down;			//move to new node below
 			rCurrent = dCurrent;				//move rCurrent to beginning of new row
 		}
@@ -47,6 +48,8 @@ public class Grid {
 		}
 		System.out.print("\n");							
 		
+		rCurrent = head;
+		dCurrent = head;
 		for(int i = 0; i < row;i++){							
 			System.out.print(String.format("%10s", "row "+i));	//prints row numbers
 			for(int j = 0; j<col;j++){
@@ -60,72 +63,169 @@ public class Grid {
 		}
 			
 	}//end display
-	public static void checkInput(String s,Value v){
-		
-		Scanner input = new Scanner(System.in);		//instantiate scanner object
-		String read = input.nextLine();				//read input
-		
-		boolean checkInput = read.startsWith("\"");		
-		
-		if(checkInput){								//check if input is string or double
-			read = read.substring(1);				//cut out " from string
-			v.sval = read;						//store to sval
-			v.tag = "STR";						//change tag to string
-		}
-		else{
-			double temp = Double.parseDouble(read);	//parse double from string
-			v.dval = temp;					//store to dval
-			v.tag = "DBL";					//change tag to double
-		}
-	}//end checkInput()
 	
-	public static void menu(){
-		Scanner input = new Scanner(System.in);
-		String read = input.nextLine();
-		switch(read){
-		case "dis": ;
-		case "f": ;
-		case "as": ;
-		case "n": ;
-		case "a": ;
-		case "s": ;
-		case "m": ;
-		case "d": ;
-		case "ar": ;
-		case "sr": ;
-		case "mr": ;
-		case "dr": ;
-		case "ac": ;
-		case "sc": ;
-		case "mc": ;
-		case "dc": ;
-		case "ir": ;
-		case "ic": ;
-		case "delr": ;
-		case "delc": ;
-		case "q": break ;
-		default: {System.out.println("That is not valid option.");
+
+	
+
+	public static void fill(){
+		Scanner scan = new Scanner(System.in);
+		int frow, fcol, trow, tcol;
+		String temp;
+		Value tempVal = new Value();
+		
+		System.out.print("from row: ");
+		frow = scan.nextInt();
+		System.out.print("from column: ");
+		fcol = scan.nextInt();
+		System.out.print("to row: ");
+		trow = scan.nextInt();
+		System.out.print("to column: ");
+		tcol = scan.nextInt();
+		System.out.print("prefix strings with \"\n");
+		System.out.print("with value: ");
+		temp = scan.next();
+		tempVal = tempVal.checkInput(temp);
+		
+		
+
+		
+		
+	}//end fill()
+	public static void assignCell(){
+		Scanner scan = new Scanner(System.in);
+		int rowNum, columnNum;
+		String temp;
+		Value v = new Value();
+		
+		System.out.print("row: ");
+		rowNum = scan.nextInt();
+		System.out.print("column: ");
+		columnNum = scan.nextInt();
+		System.out.print("value: ");
+		temp = scan.next();
+		v = v.checkInput(temp);
+		
+		rCurrent = head;
+		dCurrent = head;
+		//moves right until at desired column then down the column
+		for(int i = 0;i!=rowNum;i++){
+			for(int j = 0; j!=columnNum; j++){
+				rCurrent = rCurrent.right;
 			}
+			rCurrent = rCurrent.down;
+		}
+		Node cell = new Node(rCurrent.right,rCurrent.down,v);
+		cell = rCurrent;
 		
-		}//end switch
-
-		
-	}
-
-	public void fill(){
-		
-	}
-	public void assignCell(){
-		
-	}
+	}//end assignCell()
 	public void number(){
 		System.out.print("From row: ");
+		System.out.print("From column: ");
+		System.out.print("To column: ");
+		System.out.print("To column: ");
 		
 		
-	}
-	public void quit(){
-		
-	}
+	}//end number()
+	
+		/********************
+		 ********Menu********
+		 ********************/
+	
+	public static void menu(Grid a){
+		boolean sentinal = true;
+		while(sentinal == true){
+			System.out.print("\n");
+			System.out.println("Operations");
+			System.out.println("  display          dis	        assign cell      as");
+			System.out.println("  fill		   f		number           n");
+			System.out.println("  add cells	   a		subtract cells	 s");
+			System.out.println("  multiply cells   m		divide cells	 d");
+			System.out.println("  add rows	   ar		subtract rows	 sr");
+			System.out.println("  multiply rows	   mr		divide rows	 dr");
+			System.out.println("  add columns	   ac		subtract columns sc");
+			System.out.println("  multiply columns mc		divide columns	 dc");
+			System.out.println("  insert row	   ir		insert column	 ic");
+			System.out.println("  delete row	   delr         delete column	 delc");
+			System.out.println("  quit	           q");
+			Scanner input = new Scanner(System.in);
+			System.out.print("->");
+			String read = input.nextLine();
+			switch(read){
+				case "dis": {
+					a.display();
+					break;
+				}
+				case "f": {
+					fill();
+					break;
+				}
+				case "as":{
+					assignCell();
+					break;
+				}
+				case "n": {
+					break;
+				}
+				case "a": {
+					break;
+				}
+				case "s": {
+					break;
+				}
+				case "m": {
+					break;
+				}
+				case "d": {
+					break;
+				}
+				case "ar": {
+					break;
+				}
+				case "sr": {
+					break;
+				}
+				case "mr": {
+					break;
+				}
+				case "dr": {
+					break;
+				}
+				case "ac": {
+					break;
+				}
+				case "sc": {
+					break;
+				}
+				case "mc": {
+					break;
+				}
+				case "dc": {
+					break;
+				}
+				case "ir": {
+					break;
+				}
+				case "ic": {
+					break;
+				}
+				case "delr": {
+					break;
+				}
+				case "delc": {
+					break;
+				}
+				case "q":{
+					sentinal = false;
+					break ;
+				}
+				default:{
+					System.out.println("That is not valid option.");
+					break;
+				}
+			}//end switch
+		}//end while
+		System.out.println("\nPROCESS ENDED");
+	}//end menu()
 	
 	/*********************
 	 ***Node Arithmetic*** 
@@ -199,6 +299,6 @@ public class Grid {
 
 	public static void main(String[] args){
 		Grid a = new Grid();
-		a.display();
+		menu(a);
 	}
 }

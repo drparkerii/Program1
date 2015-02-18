@@ -105,7 +105,7 @@ public class Tests {
 	}*/
 	
 	//test for grid class
-	/*public static void main(String[] args){
+	public static void main(String[] args){
 	   Grid a = new Grid();
 		a.rCurrent.data.sval = "hello";
 		a.rCurrent.right.data.sval = "world";
@@ -114,8 +114,21 @@ public class Tests {
 		a.rCurrent.right.right.right.right.data.sval = "fine";
 		a.rCurrent.right.right.right.right.right.data.sval = "!";
 		a.display();
+		
+		a.rCurrent = a.head;
+		
+	   
+		a.rCurrent.down.data.sval = "hello";
+		a.rCurrent.down.down.data.sval = "world";
+		a.rCurrent.down.down.down.data.sval = "I";
+		a.rCurrent.down.down.down.down.data.sval = "work";
+		a.rCurrent.down.down.down.down.down.data.sval = "fine";
+		a.rCurrent.down.down.down.down.down.down.data.sval = "!";
+		a.display();
+
 	 
-	  }*/
+	  }
+	
 	
 
 }

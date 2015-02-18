@@ -1,11 +1,10 @@
 //ACCEPTS INPUT FOR NEW NODE AS Node(right pointer, down pointer)
 public class Node {
-	
 	Node right, down;
-	public Value data;
-	
+	Value data;
 	//constructor for initial node
 	public Node(){
+
 		this.data = new Value();
 	}
 	
