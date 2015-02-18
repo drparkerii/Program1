@@ -10,15 +10,15 @@ public class Node {
 	
 	//constructor for Node with no data
 	public Node(Node r, Node d){
-		this.right = r;
-		this.down = d;
-		this.data = new Value();
+		right = r;
+		down = d;
+		data = new Value();
 	}
 	
 	//constructor for new node with data
 	public Node(Node r, Node d, Value v){
-		this.right = r;
-		this.down = d;
-		this.data = v;
+		right = r;
+		down = d;
+		data = v;
 	}
 }

@@ -42,7 +42,7 @@ This program makes a simple 2d matrix using circular linked lists
  Grid Class
  	+basic grid(2d matrix)
  	+display
- 	-assign cell
+ 	+assign cell
  	-number to fill cells with natural numbers in subgrid
  	-fill to fill certain cells with same value in subgrid
  		-double check VALIDATION in program 1 directions
@@ -71,3 +71,30 @@ This program makes a simple 2d matrix using circular linked lists
 		System.out.println("with value: ");
 		temp = scan.nextLine();
 		checkInput(temp);
+		
+		
+		
+***********************************************************************************************************************************************
+***********************************************************************************************************************************************
+***********************************************************************************************************************************************
+
+Please use these operations for your sample terminal session
+and turn in a hardcopy of your program with your source code. 
+
+fill: from row 0, column 0 to row 9, column 5, with "hi
+number: from row 1, column 1 to row 8, column 4
+display
+divide rows: first row 2, second row 1, to row 3 (should cause a divide by zero)
+display
+insert column:  column 6
+fill: from row 0, column 6 to row 9, columm 6 with "bye
+display
+delete row: row 0
+display
+insert row: row 0
+fill: from row 0, column 0 to row 0, column 6 with "snurf
+display
+quit
+
+
+always gonna start from top left and go to bottom right for fill style functions

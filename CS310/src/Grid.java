@@ -89,7 +89,7 @@ public class Grid {
 
 	
 
-	public static void fill(){
+	public void fill(){
 		Scanner scan = new Scanner(System.in);
 		int frow, fcol, trow, tcol;
 		String temp;
@@ -115,7 +115,7 @@ public class Grid {
 	}//end fill()
 	
 	
-	public static Grid assignCell(Grid a){
+	public Grid assignCell(Grid a){
 		Scanner scan = new Scanner(System.in);
 		int rowNum, columnNum;
 		String temp;
@@ -129,29 +129,26 @@ public class Grid {
 		temp = scan.next();
 		v = v.checkInput(temp);
 		
-		rCurrent = head;
-		dCurrent = head;
-		
 		//move down then right to indicated Node
 		for(int i = 0; i!=rowNum; i++)
 			rCurrent = rCurrent.down;
 		for(int i = 0; i!=columnNum;i++)
 			rCurrent = rCurrent.right;
-		
-		Node cell = rCurrent;
-		cell.right = rCurrent.right;
-		cell.down = rCurrent.down;
-		cell.data = v;
 
+		//set current.data to input
+		rCurrent.data = v;
+		
+		//return updated grid
 		return(a);
 		
 		
 	}//end assignCell()
 	
 
-	public static Grid number(Grid a){
+	public Grid number(Grid a){
 		Scanner scan = new Scanner(System.in);
 		int frow, fcol, trow, tcol;
+		int num = 0;
 		
 		System.out.print("From row: ");
 		frow = scan.nextInt();
@@ -161,6 +158,28 @@ public class Grid {
 		trow = scan.nextInt();
 		System.out.print("To column: ");
 		tcol = scan.nextInt();
+		
+		//move to initial node
+		for(int i = 0; i!=frow; i++)
+			rCurrent = rCurrent.down;
+		for(int i = 0; i!=fcol;i++)
+			rCurrent = rCurrent.right;
+		
+		dCurrent = rCurrent;
+		
+		//determine size of subgrid
+		int rows = trow - frow;
+		int cols = tcol - fcol;
+
+		for(int i = 0; i!=rows; i++){
+			for(int j = 0; j!=cols; j++){
+				//put number into dval value
+				Value v = new Value();
+				rCurrent.data = v;
+				num++;
+			}
+		}
+		
 		
 		
 		
@@ -176,8 +195,6 @@ public class Grid {
 	public static void menu(Grid a){
 		rCurrent = head;
 		dCurrent = head;
-
-		while(SENTINAL == true){
 			
 			System.out.print("\n");
 			System.out.println("Operations");
@@ -202,15 +219,15 @@ public class Grid {
 					break;
 				}
 				case "f": {
-					fill();
+					a.fill();
 					break;
 				}
 				case "as":{
-					b = assignCell(a);
-					menu(b);
+					a.assignCell(a);
 					break;
 				}
 				case "n": {
+					a.number(a);
 					break;
 				}
 				case "a": {
@@ -270,8 +287,6 @@ public class Grid {
 					break;
 				}
 			}//end switch
-		}//end while
-		System.out.println("\nPROCESS ENDED");
 	}//end menu()
 	
 	/*********************
@@ -346,6 +361,9 @@ public class Grid {
 
 	public static void main(String[] args){
 		Grid a = new Grid();
-		menu(a);
+		while(SENTINAL == true){
+			menu(a);
+		}
+		System.out.println("\nPROCESS ENDED");
 	}
 }
