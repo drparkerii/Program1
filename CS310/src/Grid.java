@@ -401,11 +401,11 @@ public class Grid {
 		tempCol = scan.nextInt();
 		
 		//move rCurrent to column before inserted column
-		for(int i =0; i<tempCol; i++){
+		for(int i =0; i<tempCol-1; i++){
 			rCurrent = rCurrent.right;
 		}
 		//move dCurrent to column to be inserted
-		for(int i = 0; i<=tempCol; i++){
+		for(int i = 0; i<=tempCol-1; i++){
 			dCurrent = dCurrent.right;
 		}
 		
@@ -416,6 +416,7 @@ public class Grid {
 		rCurrent = leftLine.right;
 		topLine = leftLine.right;
 		
+		System.out.println();
 		for(int i = 0; i<=row;i++){
 			rCurrent.down = new Node();		//create new node below
 			rCurrent = rCurrent.down;		//point rCurrent to new node
@@ -424,7 +425,7 @@ public class Grid {
 			
 			leftLine.right = rCurrent;		//
 			rCurrent.right = dCurrent;
-			if(i == row){
+			if(i+1 == row){
 				rCurrent.down = topLine;
 			}
 			System.out.println("worked");
@@ -436,18 +437,41 @@ public class Grid {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("row: ");
 		
-		row = scan.nextInt();
+		tempRow = scan.nextInt();
 		
+		//move rCurrent to row before inserted row
+		for(int i =0; i<tempRow; i++){
+			rCurrent = rCurrent.down;
+		}
+		//move dCurrent to row to be inserted
+		for(int i = 0; i<=tempRow+1; i++){
+			dCurrent = dCurrent.down;
+		}
+		for(int i = 0; i!=tempRow; i++){
+			rCurrent.down = dCurrent;
+		}
 		row--;
 	}
+	
 	public void deleteColumn(){
 		int tempCol;
 		Scanner scan = new Scanner(System.in);
 		System.out.print("column: ");
 		
-		col = scan.nextInt();
-			
-		row--;
+		tempCol = scan.nextInt();
+		
+		//move rCurrent to row before inserted row
+		for(int i =0; i<tempCol; i++){
+			rCurrent = rCurrent.right;
+		}
+		//move dCurrent to row to be inserted
+		for(int i = 0; i<=tempCol+1; i++){
+			dCurrent = dCurrent.right;
+		}
+		for(int i = 0; i!=tempCol; i++){
+			rCurrent.right = dCurrent;
+		}
+		col--;
 	}
 	
 		
