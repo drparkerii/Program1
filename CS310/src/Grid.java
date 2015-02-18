@@ -15,20 +15,19 @@ public class Grid {
 		rCurrent = head;				//point rCurrent to head
 		dCurrent = head;				//point dCurrnet to head
 		for(int i=0; i<row;i++){
-			for(int j=0;j<col;j++){
-				if(j+1==col){
-					rCurrent.right = dCurrent;		//point last node to head
+				for(int j=0;j<col;j++){
+					if(j+1==col){
+						rCurrent.right = dCurrent;		//point last node or row to head of row
+					}
+					else{
+						rCurrent.right = new Node();		//make new node to the right
+						rCurrent = rCurrent.right;			//move to new node right
+					}
 				}
-				else{
-					rCurrent.right = new Node();		//make new node to the right
-					rCurrent.data = new Value();
-					rCurrent = rCurrent.right;			//move to new node right
-				}
-			}
 			dCurrent.down = new Node();			//make new node below
-			dCurrent.data = new Value();
 			dCurrent = dCurrent.down;			//move to new node below
 			rCurrent = dCurrent;				//move rCurrent to beginning of new row
+
 		}
 		rCurrent = head;						//reset rCurrent to head
 		dCurrent = head;						//reset dCurrent to head

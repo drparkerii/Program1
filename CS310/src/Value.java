@@ -3,6 +3,7 @@ public class Value {
 	public double dval;
 	public String sval;
 	private String tag;
+	private Value tempVal;
 	
 	//initial constructor for value
 	public Value(){
@@ -86,7 +87,7 @@ public class Value {
 	
 	
 	public Value checkInput(String s){
-		Value tempVal = new Value();
+		tempVal = new Value();
 		boolean checkInput = s.startsWith("\"");		
 		if(checkInput){								//check if input is string or double
 			s = s.substring(1);				//cut out " from string
@@ -98,7 +99,7 @@ public class Value {
 			try{
 				double d = Double.parseDouble(s);	//parse double from string
 				tempVal.dval = d;
-				tempVal.tag = "DBl";
+				tempVal.tag = "DBL";
 				return(tempVal);
 			}
 			catch(NumberFormatException n){
@@ -107,5 +108,9 @@ public class Value {
 			}
 		}
 	}//end checkInput()
+	
+	public static void main(String[] args){
+		
+	}
 	
 }

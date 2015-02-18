@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 public class Tests {
 
 	//test for Node class
@@ -106,26 +106,60 @@ public class Tests {
 	
 	//test for grid class
 	public static void main(String[] args){
-	   Grid a = new Grid();
+		Scanner scan = new Scanner(System.in);
+		
+	    Grid a = new Grid();
+		/*
 		a.rCurrent.data.sval = "hello";
-		a.rCurrent.right.data.sval = "world";
-		a.rCurrent.right.right.data.sval = "I";
-		a.rCurrent.right.right.right.data.sval = "work";
-		a.rCurrent.right.right.right.right.data.sval = "fine";
-		a.rCurrent.right.right.right.right.right.data.sval = "!";
+		a.rCurrent = a.rCurrent.right;
+		a.rCurrent.data.sval = "world";
+		a.rCurrent = a.rCurrent.right;
+		a.rCurrent.data.sval = "hello";
+		a.rCurrent = a.rCurrent.right;
+		a.rCurrent.data.sval = "world";
+		a.rCurrent = a.rCurrent.right;
+		a.rCurrent.data.sval = "hello";
+		a.rCurrent = a.rCurrent.right;
+		a.rCurrent.data.sval = "world";
+		a.rCurrent = a.rCurrent.right;
 		a.display();
+		*/
+	    
+	    // populating row with loop
+	    
+	    Value y = new Value();
+	    int i = 0;
+	    do{
+	    	String read = scan.next();
+	 	    y = y.checkInput(read);
+	 	    a.rCurrent.data = y;
+	 	    a.rCurrent = a.rCurrent.right;
+	    }
+	    while(a.rCurrent.right!=a.dCurrent.right);
+	    a.display();
+	    
+	    /*
+	    Value y = new Value();
+	    int i = 0;
+	    do{
+	    	String read = scan.next();
+	 	    y = y.checkInput(read);
+	 	    a.dCurrent.data = y;
+	 	    a.dCurrent = a.dCurrent.down;
+	    }
+	    while(a.dCurrent.down!=a.rCurrent.down);
+	    a.display();
+		 */
+		 
 		
-		a.rCurrent = a.head;
 		
-	   
-		a.rCurrent.down.data.sval = "hello";
-		a.rCurrent.down.down.data.sval = "world";
-		a.rCurrent.down.down.down.data.sval = "I";
-		a.rCurrent.down.down.down.down.data.sval = "work";
-		a.rCurrent.down.down.down.down.down.data.sval = "fine";
-		a.rCurrent.down.down.down.down.down.down.data.sval = "!";
-		a.display();
-
+		/*a.rCurrent = a.head;
+		
+		while(a.rCurrent.right!=a.head){
+			
+			a.rCurrent.data.sval = "hello";
+		}
+		a.display();*/
 	 
 	  }
 	
