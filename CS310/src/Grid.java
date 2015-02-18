@@ -356,16 +356,69 @@ public class Grid {
 	 *********************/
 	
 	public void insertRow(){
+		int tempRow;
+		Scanner scan = new Scanner(System.in);
+		System.out.print("row: ");
 		
+		tempRow = scan.nextInt();
+		
+		//move rCurrent to row before inserted row
+		for(int i =0; i<tempRow; i++){
+			rCurrent = rCurrent.down;
+		}
+		//move dCurrent to row to be inserted
+		for(int i = 0; i<=tempRow; i++){
+			dCurrent = dCurrent.down;
+		}
+		
+		topLine = rCurrent;
+		topLine.down = new Node();
+		topLine.down.down = dCurrent;
+		
+		rCurrent = topLine.down;
+		leftLine = topLine.down;
+		
+		//create linked list with rcurrent above and dcurrent below
+		for(int i = 0; i<=col;i++){
+			rCurrent.right = new Node();		//create new node
+			rCurrent = rCurrent.right;			//point rCurrent to new node
+			topLine = topLine.right;			//point topLine above
+			dCurrent = dCurrent.right;			//point dCurrent below
+			
+			topLine.down = rCurrent;			//point topLine down to rCurrent
+			rCurrent.down = dCurrent;			//point rcurrent down to dCurrent
+			if(i == col){
+				rCurrent.right = leftLine;
+			}	
+		}
+		row++;
 	}
 	public void insertColumn(){
+		int tempCol;
+		Scanner scan = new Scanner(System.in);
+		System.out.print("column: ");
 		
+		col = scan.nextInt();
+		
+		col++;
 	}
 	public void deleteRow(){
+		int tempRow;
+		Scanner scan = new Scanner(System.in);
+		System.out.print("row: ");
 		
+		row = scan.nextInt();
+		
+		row--;
 	}
 	public void deleteColumn(){
+		int tempCol;
+		Scanner scan = new Scanner(System.in);
+		System.out.print("column: ");
 		
+		col = scan.nextInt();
+			
+		row--;
 	}
 	
 		

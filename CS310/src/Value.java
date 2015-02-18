@@ -8,7 +8,7 @@ public class Value {
 	//initial constructor for value
 	public Value(){
 		this.dval = 0;
-		this.sval = "1";
+		this.sval = "";
 		this.tag = "STR";
 	}
 	public Value(double d){
