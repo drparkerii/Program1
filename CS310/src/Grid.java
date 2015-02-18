@@ -363,20 +363,20 @@ public class Grid {
 		tempRow = scan.nextInt();
 		
 		//move rCurrent to row before inserted row
-		for(int i =0; i<tempRow; i++){
+		for(int i =0; i<tempRow-1; i++){
 			rCurrent = rCurrent.down;
 		}
 		//move dCurrent to row to be inserted
-		for(int i = 0; i<=tempRow; i++){
+		for(int i = 0; i<=tempRow-1; i++){
 			dCurrent = dCurrent.down;
 		}
 		
-		topLine = rCurrent;
-		topLine.down = new Node();
-		topLine.down.down = dCurrent;
+		topLine = rCurrent;				//set top line to above insert
+		topLine.down = new Node();		//create start of new row
+		topLine.down.down = dCurrent;	//point start of new row down
 		
-		rCurrent = topLine.down;
-		leftLine = topLine.down;
+		rCurrent = topLine.down;		//point rCurrent to iterate
+		leftLine = topLine.down;		//point leftLine for row head
 		
 		//create linked list with rcurrent above and dcurrent below
 		for(int i = 0; i<=col;i++){
@@ -398,8 +398,37 @@ public class Grid {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("column: ");
 		
-		col = scan.nextInt();
+		tempCol = scan.nextInt();
 		
+		//move rCurrent to column before inserted column
+		for(int i =0; i<tempCol; i++){
+			rCurrent = rCurrent.right;
+		}
+		//move dCurrent to column to be inserted
+		for(int i = 0; i<=tempCol; i++){
+			dCurrent = dCurrent.right;
+		}
+		
+		leftLine = rCurrent;
+		leftLine.right = new Node();
+		leftLine.right.right = dCurrent;
+		
+		rCurrent = leftLine.right;
+		topLine = leftLine.right;
+		
+		for(int i = 0; i<=row;i++){
+			rCurrent.down = new Node();		//create new node below
+			rCurrent = rCurrent.down;		//point rCurrent to new node
+			leftLine = leftLine.down;		//point left line to next down
+			dCurrent = dCurrent.down;		//point dCurrent to next down
+			
+			leftLine.right = rCurrent;		//
+			rCurrent.right = dCurrent;
+			if(i == row){
+				rCurrent.down = topLine;
+			}
+			System.out.println("worked");
+		}
 		col++;
 	}
 	public void deleteRow(){
