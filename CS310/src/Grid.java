@@ -1,18 +1,20 @@
 import java.util.Scanner;
 
 public class Grid {
+	static final Node head = new Node();
 	static Value tempVal;
+	static Node rCurrent, dCurrent, topLine, leftLine;
+	static Grid b;
+	static boolean SENTINAL = true;
 	int row = 10;								//set initial row size
 	int col = 6;								//set initial column size
-	static Node head, rCurrent, dCurrent, topLine, leftLine;
-	static Grid b;
 	
 	/***************
 	 **Constructor**
 	 ***************/
 	
 	public Grid(){	
-		head = new Node();				//make new node at head
+		//head = new Node();				//make new node at head
 		rCurrent = head;				//point rCurrent to head
 		dCurrent = head;				//point dCurrnet to head
 		for(int i=0; i<row;i++){
@@ -127,41 +129,57 @@ public class Grid {
 		temp = scan.next();
 		v = v.checkInput(temp);
 		
+		int colPosition = 0;
+		int rowPosition = 0;
+		
 		rCurrent = head;
 		dCurrent = head;
 		//moves right until at desired column then down the column
+		//remove nested for loop it is causing doubling of column position
 		for(int i = 0;i!=rowNum;i++){
 			for(int j = 0; j!=columnNum; j++){
 				rCurrent = rCurrent.right;
+				colPosition++;
 			}
 			rCurrent = rCurrent.down;
+			rowPosition++;
 		}
-		
-		System.out.println(v.dval);
 		
 		Node cell = rCurrent;
 		cell.right = rCurrent.right;
 		cell.down = rCurrent.down;
 		cell.data = v;
-		cell = rCurrent;
 		
 		System.out.println("v.dval: "+v.dval);
 		System.out.println("cell.data.dval: "+cell.data.dval);
-		
-		rCurrent = head;
-		dCurrent = head;
 		System.out.println(cell.data.toString(cell.data));
+		System.out.println("col position: "+colPosition);
+		System.out.println("row position: "+rowPosition);
+		colPosition = 0;
+		rowPosition = 0;
+		
 		return(a);
 		
 		
 	}//end assignCell()
 	
-	
-	public void number(){
+
+	public static Grid number(Grid a){
+		Scanner scan = new Scanner(System.in);
+		int frow, fcol, trow, tcol;
+		
 		System.out.print("From row: ");
+		frow = scan.nextInt();
 		System.out.print("From column: ");
+		fcol = scan.nextInt();
 		System.out.print("To column: ");
+		trow = scan.nextInt();
 		System.out.print("To column: ");
+		tcol = scan.nextInt();
+		
+		
+		
+		return(b);
 		
 		
 	}//end number()
@@ -171,8 +189,10 @@ public class Grid {
 		 ********************/
 	
 	public static void menu(Grid a){
-		boolean sentinal = true;
-		while(sentinal == true){
+		rCurrent = head;
+		dCurrent = head;
+
+		while(SENTINAL == true){
 			
 			System.out.print("\n");
 			System.out.println("Operations");
@@ -257,7 +277,7 @@ public class Grid {
 					break;
 				}
 				case "q":{
-					sentinal = false;
+					SENTINAL = false;
 					break ;
 				}
 				default:{
