@@ -69,9 +69,6 @@ public class Grid {
 			System.out.print(String.format("%10s", "col "+k));
 		}
 		System.out.print("\n");							
-		
-		rCurrent = head;
-		dCurrent = head;
 		for(int i = 0; i < row;i++){							
 			System.out.print(String.format("%10s", "row "+i));	//prints row numbers
 			for(int j = 0; j<col;j++){
@@ -85,15 +82,12 @@ public class Grid {
 		}
 			
 	}//end display
-	
-
-	
 
 	public void fill(){
 		Scanner scan = new Scanner(System.in);
-		int frow, fcol, trow, tcol;
+		int frow, fcol, trow, tcol, rows, cols;
 		String temp;
-		Value tempVal = new Value();
+		Value v = new Value();
 		
 		System.out.print("from row: ");
 		frow = scan.nextInt();
@@ -103,19 +97,34 @@ public class Grid {
 		trow = scan.nextInt();
 		System.out.print("to column: ");
 		tcol = scan.nextInt();
-		System.out.print("prefix strings with \"\n");
 		System.out.print("with value: ");
 		temp = scan.next();
-		tempVal = tempVal.checkInput(temp);
+		v = v.checkInput(temp);
 		
+		rows = trow - frow;
+		cols = tcol - fcol;
 		
-
+		//move down then right to start Node
+		for(int i = 0; i!=frow; i++)
+			rCurrent = rCurrent.down;
+		for(int i = 0; i!=fcol;i++)
+			rCurrent = rCurrent.right;
 		
+		dCurrent = rCurrent;				//set dCurrent to start of sub-grid
+		
+		for(int i = 0; i<=rows;i++){		//set values to sub-grid rows X cols
+			for(int j = 0; j<=cols; j++){
+				rCurrent.data = v;			//add value to current node
+				rCurrent = rCurrent.right;	//move right
+			}
+			dCurrent = dCurrent.down;		//move down a row
+			rCurrent = dCurrent;			//point rCurrent to next row
+		}
 		
 	}//end fill()
 	
 	
-	public Grid assignCell(Grid a){
+	public void assignCell(){
 		Scanner scan = new Scanner(System.in);
 		int rowNum, columnNum;
 		String temp;
@@ -136,12 +145,7 @@ public class Grid {
 			rCurrent = rCurrent.right;
 
 		//set current.data to input
-		rCurrent.data = v;
-		
-		//return updated grid
-		return(a);
-		
-		
+		rCurrent.data = v;		
 	}//end assignCell()
 	
 
@@ -223,7 +227,7 @@ public class Grid {
 					break;
 				}
 				case "as":{
-					a.assignCell(a);
+					a.assignCell();
 					break;
 				}
 				case "n": {
