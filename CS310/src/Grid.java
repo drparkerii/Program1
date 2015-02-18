@@ -112,8 +112,8 @@ public class Grid {
 		
 		dCurrent = rCurrent;				//set dCurrent to start of sub-grid
 		
-		for(int i = 0; i<=rows;i++){		//set values to sub-grid rows X cols
-			for(int j = 0; j<=cols; j++){
+		for(int i = 0; i<rows+1;i++){		//set values to sub-grid rows X cols
+			for(int j = 0; j<cols+1; j++){
 				rCurrent.data = v;			//add value to current node
 				rCurrent = rCurrent.right;	//move right
 			}
@@ -487,19 +487,138 @@ public class Grid {
 		}
 		topLine.data = topLine.data.slash(rCurrent.data, dCurrent.data);
 	}
-	}
 	
 	/********************
 	 ***Row Arithmetic*** 
 	 ********************/
 	
 	public void addRows(){
+		int fr, sr, tr;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		
+		//point rCurrent to first row
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.plus(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.right;
+			dCurrent = dCurrent.right;
+			topLine = topLine.right;
+			
+		}
 	}
 	public void subRows(){
+		int fr, sr, tr;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		
+		//point rCurrent to first row
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.minus(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.right;
+			dCurrent = dCurrent.right;
+			topLine = topLine.right;
+			
+		}
 	}
 	public void mulRows(){
+		int fr, sr, tr;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		
+		//point rCurrent to first row
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.star(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.right;
+			dCurrent = dCurrent.right;
+			topLine = topLine.right;
+			
+		}
 	}
 	public void divRows(){
+		int fr, sr, tr;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		
+		//point rCurrent to first row
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.slash(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.right;
+			dCurrent = dCurrent.right;
+			topLine = topLine.right;
+			
+		}
 	}
 	
 	/***********************
@@ -507,12 +626,132 @@ public class Grid {
 	 ***********************/
 	
 	public void addColumns(){
+		int fc, sc, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first column
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.plus(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.down;
+			dCurrent = dCurrent.down;
+			topLine = topLine.down;
+			
+		}
 	}
 	public void subColumns(){
+		int fc, sc, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first column
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.minus(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.down;
+			dCurrent = dCurrent.down;
+			topLine = topLine.down;
+			
+		}
 	}
 	public void mulColumns(){
+		int fc, sc, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first column
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.star(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.down;
+			dCurrent = dCurrent.down;
+			topLine = topLine.down;
+			
+		}
 	}
 	public void divColumns(){
+		int fc, sc, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first column
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		//point dCurrent to second row
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		//point topLine to target row
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		
+		for(int i = 0; i<=col; i++){
+			topLine.data = topLine.data.slash(rCurrent.data, dCurrent.data);
+			rCurrent = rCurrent.down;
+			dCurrent = dCurrent.down;
+			topLine = topLine.down;
+			
+		}
 	}
 	
 	/*********************
@@ -560,16 +799,60 @@ public class Grid {
 	public void insertColumn(){
 		int tempCol;
 		Scanner scan = new Scanner(System.in);
+		System.out.print("row: ");
+		
+		tempCol = scan.nextInt();
+		
+		//move rCurrent to row before inserted row
+		for(int i =0; i<tempCol-1; i++){
+			rCurrent = rCurrent.right;
+		}
+		//move dCurrent to row to be inserted
+		for(int i = 0; i<=tempCol-1; i++){
+			dCurrent = dCurrent.right;
+		}
+		
+		topLine = rCurrent;				//set top line to above insert
+		topLine.right = new Node();		//create start of new row
+		topLine.right.right = dCurrent;	//point start of new row down
+		
+		rCurrent = topLine.right;		//point rCurrent to iterate
+		leftLine = topLine.right;		//point leftLine for row head
+		
+		//create linked list with rcurrent above and dcurrent below
+		for(int i = 0; i<=col;i++){
+			rCurrent.down = new Node();		//create new node
+			rCurrent = rCurrent.down;			//point rCurrent to new node
+			topLine = topLine.down;			//point topLine above
+			dCurrent = dCurrent.down;			//point dCurrent below
+			
+			topLine.right = rCurrent;			//point topLine down to rCurrent
+			rCurrent.right = dCurrent;			//point rcurrent down to dCurrent
+			if(i == col){
+				rCurrent.down = leftLine;
+			}	
+		}
+		col++;
+		
+		
+		
+		
+		
+		
+		
+		
+		/*int tempCol;
+		Scanner scan = new Scanner(System.in);
 		System.out.print("column: ");
 		
 		tempCol = scan.nextInt();
 		
 		//move rCurrent to column before inserted column
-		for(int i =0; i<tempCol-1; i++){
+		for(int i =0; i<tempCol; i++){
 			rCurrent = rCurrent.right;
 		}
 		//move dCurrent to column to be inserted
-		for(int i = 0; i<=tempCol-1; i++){
+		for(int i = 0; i<=tempCol; i++){
 			dCurrent = dCurrent.right;
 		}
 		
@@ -580,21 +863,22 @@ public class Grid {
 		rCurrent = leftLine.right;
 		topLine = leftLine.right;
 		
-		System.out.println();
-		for(int i = 0; i<=row;i++){
-			rCurrent.down = new Node();		//create new node below
-			rCurrent = rCurrent.down;		//point rCurrent to new node
-			leftLine = leftLine.down;		//point left line to next down
-			dCurrent = dCurrent.down;		//point dCurrent to next down
-			
-			leftLine.right = rCurrent;		//
-			rCurrent.right = dCurrent;
-			if(i+1 == row){
+		for(int i = 0; i<row;i++){
+			if(i == row){
 				rCurrent.down = topLine;
 			}
-			System.out.println("worked");
+			else{
+				rCurrent.down = new Node();		//create new node below
+				rCurrent = rCurrent.down;		//point rCurrent to new node
+				leftLine = leftLine.down;		//point left line to next down
+				dCurrent = dCurrent.down;		//point dCurrent to next down
+				
+				leftLine.right = rCurrent;		//
+				rCurrent.right = dCurrent;
+				System.out.println("worked");
+			}
 		}
-		col++;
+		col++;*/
 	}
 	public void deleteRow(){
 		int tempRow;
