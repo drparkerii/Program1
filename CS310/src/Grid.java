@@ -4,7 +4,7 @@ public class Grid {
 	static Value tempVal;
 	int row = 10;								//set initial row size
 	int col = 6;								//set initial column size
-	static Node head, rCurrent, dCurrent;
+	static Node head, rCurrent, dCurrent, topLine, leftLine;
 	
 	/***************
 	 **Constructor**
@@ -29,8 +29,28 @@ public class Grid {
 			rCurrent = dCurrent;				//move rCurrent to beginning of new row
 
 		}
-		rCurrent = head;						//reset rCurrent to head
-		dCurrent = head;						//reset dCurrent to head
+		rCurrent = head;						//set rCurrent to head.right
+		dCurrent = head.down;						//set dCurrent to head.down.right
+		topLine = head;
+		leftLine = head;
+		
+		for(int i = 0; i<row; i++){
+			for(int j = 0; j<col;j++){				//setting down pointers
+				if(i+2 == row)	{
+					dCurrent.down = topLine;		//set bottom node to head of column
+					topLine = topLine.right;		//moves topLine to the right
+					dCurrent = dCurrent.right;		//moves dCurrent right
+				}
+				else{
+					rCurrent.down = dCurrent;		//link rCurrent to dCurrent
+					rCurrent = rCurrent.right;		//move rCurrent right
+					dCurrent = dCurrent.right;		//move dCurrent right
+				}
+			}
+			leftLine = leftLine.down;				//move left line pointer down
+			rCurrent = leftLine;					//set rCurrent to beginning of next row
+			dCurrent = leftLine.down;				//set dCurrent to beginning of next row + 1
+		}
 	}//end grid() constructor
 
 	
@@ -114,7 +134,11 @@ public class Grid {
 			rCurrent = rCurrent.down;
 		}
 		Node cell = new Node(rCurrent.right,rCurrent.down,v);
+		cell.right = rCurrent.right;
+		cell.down = rCurrent.down;
 		cell = rCurrent;
+		rCurrent = head;
+		dCurrent = head;
 		
 	}//end assignCell()
 	public void number(){

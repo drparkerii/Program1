@@ -127,6 +127,9 @@ public class Tests {
 	    
 	    // populating row with loop
 	    
+	    a.rCurrent = a.head;
+	    a.dCurrent = a.head;
+	    /*
 	    Value y = new Value();
 	    int i = 0;
 	    do{
@@ -137,8 +140,9 @@ public class Tests {
 	    }
 	    while(a.rCurrent.right!=a.dCurrent.right);
 	    a.display();
+	    */
 	    
-	    /*
+	    
 	    Value y = new Value();
 	    int i = 0;
 	    do{
@@ -149,7 +153,7 @@ public class Tests {
 	    }
 	    while(a.dCurrent.down!=a.rCurrent.down);
 	    a.display();
-		 */
+		 
 		 
 		
 		
