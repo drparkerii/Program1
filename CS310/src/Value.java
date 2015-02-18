@@ -31,10 +31,10 @@ public class Value {
 	 ************************/
 	
 	//plus(Value) Method to add values
-	public Value plus(Value a){
+	public Value plus(Value a, Value b){
 		Value netval = new Value();
-		if(tag=="DBL" && a.tag=="DBL"){
-			netval.dval = dval + a.dval;
+		if(b.tag=="DBL" && a.tag=="DBL"){
+			netval.dval = a.dval + b.dval;
 			netval.tag = "DBL";
 			return(netval);
 		}
@@ -43,10 +43,10 @@ public class Value {
 	}
 	
 	//minus(Value) Method to subtract values
-	public Value minus(Value a){
+	public Value minus(Value a, Value b){
 		Value netval = new Value();
-		if(tag=="DBL" && a.tag=="DBL"){
-			netval.dval = dval - a.dval;
+		if(b.tag=="DBL" && a.tag=="DBL"){
+			netval.dval = a.dval - b.dval;
 			netval.tag = "DBL";
 			return(netval);
 		}
@@ -55,10 +55,10 @@ public class Value {
 	}
 	
 	//star(Value) Method to multiply values
-	public Value star(Value a){
+	public Value star(Value a, Value b){
 		Value netval = new Value();
-		if(tag=="DBL" && a.tag=="DBL"){
-			netval.dval = dval * a.dval;
+		if(b.tag=="DBL" && a.tag=="DBL"){
+			netval.dval = a.dval * b.dval;
 			netval.tag = "DBL";
 			return(netval);
 		}
@@ -67,10 +67,10 @@ public class Value {
 	}
 	
 	//slash(Value) Method to divide values
-	public Value slash(Value a){
+	public Value slash(Value a, Value b){
 		Value netval = new Value();
-		if(tag=="DBL" && a.tag=="DBL"){
-			netval.dval = dval / a.dval;
+		if(b.tag=="DBL" && a.tag=="DBL"){
+			netval.dval = a.dval / b.dval;
 			netval.tag = "DBL";
 			return(netval);
 		}

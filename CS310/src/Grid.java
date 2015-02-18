@@ -202,6 +202,8 @@ public class Grid {
 	public static void menu(Grid a){
 		rCurrent = head;
 		dCurrent = head;
+		topLine = head;
+		leftLine = head;
 			
 			System.out.print("\n");
 			System.out.println("Operations");
@@ -317,12 +319,174 @@ public class Grid {
 	 *********************/
 	
 	public void addNodes(){
+		int fr, fc, sr, sc, tr, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first target
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		
+		//point dCurrent to second target
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		
+		//point to target
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		topLine.data = topLine.data.plus(rCurrent.data, dCurrent.data);
 	}
 	public void subNodes(){
+		int fr, fc, sr, sc, tr, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first target
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		
+		//point dCurrent to second target
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		
+		//point to target
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		topLine.data = topLine.data.minus(rCurrent.data, dCurrent.data);
 	}
+	
 	public void mulNodes(){
+		int fr, fc, sr, sc, tr, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first target
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		
+		//point dCurrent to second target
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		
+		//point to target
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		topLine.data = topLine.data.star(rCurrent.data, dCurrent.data);
 	}
 	public void divNodes(){
+		int fr, fc, sr, sc, tr, tc;
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.print("first row: ");
+		fr = scan.nextInt();
+		System.out.print("first column: ");
+		fc = scan.nextInt();
+		System.out.print("second row: ");
+		sr = scan.nextInt();
+		System.out.print("second column: ");
+		sc = scan.nextInt();
+		System.out.print("target row: ");
+		tr = scan.nextInt();
+		System.out.print("target column: ");
+		tc = scan.nextInt();
+		
+		//point rCurrent to first target
+		for(int i = 0; i != fr; i++){
+			rCurrent = rCurrent.down;
+		}
+		for(int i = 0; i != fc; i++){
+			rCurrent = rCurrent.right;
+		}
+		
+		//point dCurrent to second target
+		for(int i = 0; i != sr; i++){
+			dCurrent = dCurrent.down;
+		}
+		for(int i = 0; i != sc; i++){
+			dCurrent = dCurrent.right;
+		}
+		
+		//point to target
+		for(int i = 0; i != tr; i++){
+			topLine = topLine.down;
+		}
+		for(int i = 0; i != tc; i++){
+			topLine = topLine.right;
+		}
+		topLine.data = topLine.data.slash(rCurrent.data, dCurrent.data);
+	}
 	}
 	
 	/********************
