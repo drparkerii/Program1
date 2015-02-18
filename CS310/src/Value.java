@@ -16,7 +16,8 @@ public class Value {
 		this.tag = "DBL";
 	}
 	public Value(String s){
-		
+		this.sval = s;
+		this.tag = "STR";
 	}
 	//constructor for value containing a data
 	public Value(double d, String s, String t){

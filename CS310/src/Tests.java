@@ -105,7 +105,7 @@ public class Tests {
 	}*/
 	
 	//test for grid class
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		Scanner scan = new Scanner(System.in);
 		
 	    Grid a = new Grid();
@@ -127,8 +127,8 @@ public class Tests {
 	    
 	    // populating row with loop
 	    
-	    a.rCurrent = a.head;
-	    a.dCurrent = a.head;
+	    //a.rCurrent = a.head;
+	    //a.dCurrent = a.head;
 	    /*
 	    Value y = new Value();
 	    int i = 0;
@@ -142,7 +142,7 @@ public class Tests {
 	    a.display();
 	    */
 	    
-	    
+	   /* 
 	    Value y = new Value();
 	    int i = 0;
 	    do{
@@ -154,19 +154,8 @@ public class Tests {
 	    while(a.dCurrent.down!=a.rCurrent.down);
 	    a.display();
 		 
-		 
-		
-		
-		/*a.rCurrent = a.head;
-		
-		while(a.rCurrent.right!=a.head){
-			
-			a.rCurrent.data.sval = "hello";
-		}
-		a.display();*/
 	 
 	  }
-	
-	
-
+	*/
 }
+	

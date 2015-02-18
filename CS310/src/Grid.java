@@ -5,6 +5,7 @@ public class Grid {
 	int row = 10;								//set initial row size
 	int col = 6;								//set initial column size
 	static Node head, rCurrent, dCurrent, topLine, leftLine;
+	static Grid b;
 	
 	/***************
 	 **Constructor**
@@ -110,7 +111,9 @@ public class Grid {
 		
 		
 	}//end fill()
-	public static void assignCell(){
+	
+	
+	public static Grid assignCell(Grid a){
 		Scanner scan = new Scanner(System.in);
 		int rowNum, columnNum;
 		String temp;
@@ -133,14 +136,27 @@ public class Grid {
 			}
 			rCurrent = rCurrent.down;
 		}
-		Node cell = new Node(rCurrent.right,rCurrent.down,v);
+		
+		System.out.println(v.dval);
+		
+		Node cell = rCurrent;
 		cell.right = rCurrent.right;
 		cell.down = rCurrent.down;
+		cell.data = v;
 		cell = rCurrent;
+		
+		System.out.println("v.dval: "+v.dval);
+		System.out.println("cell.data.dval: "+cell.data.dval);
+		
 		rCurrent = head;
 		dCurrent = head;
+		System.out.println(cell.data.toString(cell.data));
+		return(a);
+		
 		
 	}//end assignCell()
+	
+	
 	public void number(){
 		System.out.print("From row: ");
 		System.out.print("From column: ");
@@ -157,6 +173,7 @@ public class Grid {
 	public static void menu(Grid a){
 		boolean sentinal = true;
 		while(sentinal == true){
+			
 			System.out.print("\n");
 			System.out.println("Operations");
 			System.out.println("  display          dis	        assign cell      as");
@@ -170,6 +187,7 @@ public class Grid {
 			System.out.println("  insert row	   ir		insert column	 ic");
 			System.out.println("  delete row	   delr         delete column	 delc");
 			System.out.println("  quit	           q");
+			
 			Scanner input = new Scanner(System.in);
 			System.out.print("->");
 			String read = input.nextLine();
@@ -183,7 +201,8 @@ public class Grid {
 					break;
 				}
 				case "as":{
-					assignCell();
+					b = assignCell(a);
+					menu(b);
 					break;
 				}
 				case "n": {
