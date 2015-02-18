@@ -149,19 +149,26 @@ public class Grid {
 	}//end assignCell()
 	
 
-	public Grid number(Grid a){
+	public void number(){
 		Scanner scan = new Scanner(System.in);
-		int frow, fcol, trow, tcol;
+		int frow, fcol, trow, tcol, rows, cols;
 		int num = 0;
+		String s;
+		Value v = new Value();
 		
 		System.out.print("From row: ");
 		frow = scan.nextInt();
 		System.out.print("From column: ");
 		fcol = scan.nextInt();
-		System.out.print("To column: ");
+		System.out.print("To row: ");
 		trow = scan.nextInt();
 		System.out.print("To column: ");
 		tcol = scan.nextInt();
+		
+		//determine size of sub-grid
+		rows = trow - frow;
+		cols = tcol - fcol;
+		
 		
 		//move to initial node
 		for(int i = 0; i!=frow; i++)
@@ -169,27 +176,23 @@ public class Grid {
 		for(int i = 0; i!=fcol;i++)
 			rCurrent = rCurrent.right;
 		
+		//set dCurrent to head of sub-grid
 		dCurrent = rCurrent;
-		
-		//determine size of subgrid
-		int rows = trow - frow;
-		int cols = tcol - fcol;
 
-		for(int i = 0; i!=rows; i++){
-			for(int j = 0; j!=cols; j++){
-				//put number into dval value
-				Value v = new Value();
+		//populate sub-grid with numbers
+		for(int i = 0; i<=rows; i++){
+			for(int j = 0; j<=cols; j++){
+				s = Integer.toString(num);
+				v = v.checkInput(s);
 				rCurrent.data = v;
 				num++;
+				
+				rCurrent = rCurrent.right;
 			}
+			dCurrent = dCurrent.down;
+			rCurrent = dCurrent;
 		}
-		
-		
-		
-		
-		return(b);
-		
-		
+		num = 0;
 	}//end number()
 	
 		/********************
@@ -231,55 +234,71 @@ public class Grid {
 					break;
 				}
 				case "n": {
-					a.number(a);
+					a.number();
 					break;
 				}
 				case "a": {
+					a.addNodes();
 					break;
 				}
 				case "s": {
+					a.subNodes();
 					break;
 				}
 				case "m": {
+					a.mulNodes();
 					break;
 				}
 				case "d": {
+					a.divNodes();
 					break;
 				}
 				case "ar": {
+					a.addRows();
 					break;
 				}
 				case "sr": {
+					a.subRows();
 					break;
 				}
 				case "mr": {
+					a.mulRows();
 					break;
 				}
 				case "dr": {
+					a.divRows();
 					break;
 				}
 				case "ac": {
+					a.addColumns();
 					break;
 				}
 				case "sc": {
+					a.subColumns();
 					break;
 				}
 				case "mc": {
+					a.mulColumns();
 					break;
 				}
 				case "dc": {
+					a.deleteColumn();
 					break;
 				}
 				case "ir": {
+					a.insertRow();
 					break;
 				}
 				case "ic": {
+					a.insertColumn();
 					break;
 				}
 				case "delr": {
+					a.deleteRow();
 					break;
 				}
 				case "delc": {
+					a.deleteColumn();
 					break;
 				}
 				case "q":{
@@ -297,51 +316,39 @@ public class Grid {
 	 ***Node Arithmetic*** 
 	 *********************/
 	
-	public double addNodes(){
-		return 0;
+	public void addNodes(){
 	}
-	public double subNodes(){
-		return 0;
+	public void subNodes(){
 	}
-	public double mulNodes(){
-		return 0;
+	public void mulNodes(){
 	}
-	public double divNodes(){
-		return 0;
+	public void divNodes(){
 	}
 	
 	/********************
 	 ***Row Arithmetic*** 
 	 ********************/
 	
-	public double addRows(){
-		return 0;
+	public void addRows(){
 	}
-	public double subRows(){
-		return 0;
+	public void subRows(){
 	}
-	public double mulRows(){
-		return 0;
+	public void mulRows(){
 	}
-	public double divRows(){
-		return 0;
+	public void divRows(){
 	}
 	
 	/***********************
 	 ***Column Arithmetic*** 
 	 ***********************/
 	
-	public double addColumns(){
-		return 0;
+	public void addColumns(){
 	}
-	public double subColumns(){
-		return 0;
+	public void subColumns(){
 	}
-	public double mulColumns(){
-		return 0;
+	public void mulColumns(){
 	}
-	public double divColumns(){
-		return 0;
+	public void divColumns(){
 	}
 	
 	/*********************
